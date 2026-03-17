@@ -21,16 +21,16 @@ public class UserView {
 
     public int displayLoginReg() {
         System.out.println("1. Login\n2. New User");
-        System.out.println("Enter your Choice : ");
+        System.out.print("Enter your Choice : ");
         return input.getInt();
     }
 
     public void invalid() {
-        System.out.println("Invalid, Try Again!!!");
+        System.out.println(Colors.RED +"Invalid, Try Again!!!"+Colors.RESET);
     }
 
     public void exit() {
-        System.out.println("Exiting...");
+        System.out.println(Colors.YELLOW+"Exiting..."+Colors.RESET);
     }
 
     public String getName() {
@@ -44,30 +44,30 @@ public class UserView {
     }
 
     public void welcomeUser(String name) {
-        System.out.println("Welcome "+name);
+        System.out.println(Colors.GREEN+"Welcome "+name+Colors.RESET);
     }
 
     public String getEmail() {
         System.out.print("Enter your Email : ");
         String email = input.getString();
         while(!PATTERN.matcher(email).matches()){
-            System.out.print("Invalid Email, try another : ");
+            System.out.print(Colors.RED+"Invalid Email, try another : "+Colors.RESET);
             email = input.getString();
         }
         return email;
     }
 
     public void newUserAdded() {
-        System.out.println("---New User Added Successfully---");
+        System.out.println(Colors.GREEN+"---New User Added Successfully---"+Colors.RESET);
     }
 
     public void Login() {
         System.out.println();
-        System.out.println("---Login---");
+        System.out.println(Colors.BG_BRIGHT_BLUE+Colors.BLACK+"---Login---"+Colors.RESET);
     }
 
     public void register() {
         System.out.println();
-        System.out.println("---Register---");
+        System.out.println(Colors.BG_BLUE+Colors.BLACK+"---Register---"+Colors.RESET);
     }
 }
