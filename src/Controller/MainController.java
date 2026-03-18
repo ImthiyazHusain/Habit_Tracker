@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.User;
 import View.UserView;
 
 public class MainController {
@@ -46,11 +47,13 @@ public class MainController {
     }
 
     private void authenticateLogin() {
-        userView.Login();
+        userView.login();
         String name = userView.getName();
         String pass = userView.getPass();
         if(userController.verifyUser(name,pass)){
+            User user = userController.getUser(name);
             userView.welcomeUser(name);
+            userController.login(user);
         }else{
             userView.invalid();
         }

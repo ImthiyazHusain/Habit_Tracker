@@ -1,7 +1,6 @@
 package Controller;
 import Model.*;
 import View.UserView;
-import View.UserView.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 
 public class UserController {
+    UserView userView = new UserView();
+    HabitController habit = new HabitController();
     private static Map<String,User> userMap = new HashMap<>();
     private static List<User> users = new ArrayList<>();
     public void createUser(String name,String email,String password){
@@ -25,8 +26,7 @@ public class UserController {
     }
 
     public void displayUsers(){
-        UserView u = new UserView();
-        u.displayUsers(users);
+        userView.displayUsers(users);
     }
 
     public boolean verifyUser(String name, String pass) {
@@ -35,5 +35,55 @@ public class UserController {
             return pass.equals(u.getPassword());
         }
         return false;
+    }
+
+    public void login(User user) {
+        int choice = 0;
+        while(choice<4){
+            choice = userView.displayMenu();
+            switch(choice){
+                case 1 : {
+                    addNewHabit(user);
+                    break;
+                }
+                case 2 : {
+                    editHabit(user);
+                    break;
+                }
+                case 3 : {
+                    viewHabits(user);
+                    break;
+                }
+                case 4 : {
+                    userView.exit();
+                    break;
+                }
+                default:{
+                    userView.invalid();
+                }
+            }
+        }
+    }
+
+    private void viewHabits(User user) {
+        List<Habit> habits = user.getHabits();
+        userView.displayHabits(habits);
+    }
+
+    private void editHabit(User user) {
+    }
+
+    private void addNewHabit(User user) {
+        int newHabitId = user.getHabit().size()+1;
+        String habitType = userView.getHabitType();
+        String habitName = userView.getHabit();
+        String habitDescription = userView.getHabitDescription();
+        int goalDays = userView.getGoalDays();
+        Habit habit = new Habit(newHabitId,habitType,habitName,habitDescription,0,goalDays);
+        user.addHabit(habit);
+    }
+
+    public User getUser(String name) {
+        return userMap.get(name);
     }
 }

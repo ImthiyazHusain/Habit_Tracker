@@ -3,6 +3,7 @@ package Utils;
 public class Colors {
     // Reset
     public static final String RESET = "\u001B[0m";
+    public static final String DEFAULT = "\u001B[97m";
 
     // Regular Colors
     public static final String BLACK = "\u001B[30m";
@@ -13,7 +14,6 @@ public class Colors {
     public static final String PURPLE = "\u001B[35m";
     public static final String CYAN = "\u001B[36m";
     public static final String WHITE = "\u001B[37m";
-    public static final String WHTE = "\u001B[37m";
 
     // Bright Colors
     public static final String BRIGHT_BLACK = "\u001B[90m";
