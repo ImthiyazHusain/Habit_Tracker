@@ -1,18 +1,17 @@
 package Model;
 
 public class Reward {
-
     private int id;
     private String title;
-    private int requiredPoints;
+    private int points;
 
-    public Reward(int id, String title, int requiredPoints) {
+    public Reward(int id, String title, int points) {
         this.id = id;
         this.title = title;
-        this.requiredPoints = requiredPoints;
+        this.points = points;
     }
 
     public int getId() { return id; }
     public String getTitle() { return title; }
-    public int getRequiredPoints() { return requiredPoints; }
+    public int getPoints() { return points; }
 }

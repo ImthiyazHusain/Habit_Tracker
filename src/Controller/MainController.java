@@ -9,7 +9,6 @@ public class MainController {
     public void start() {
         createDummyRecord();
         loginReg();
-        userController.displayUsers();
     }
 
     private void loginReg() {
@@ -40,30 +39,42 @@ public class MainController {
         userView.register();
         String name = userView.getName();
         String email = userView.getEmail();
+        if (userController.getUser(email) != null) {
+            userView.invalid();
+            return;
+        }
         String pass = userView.getPass();
-        userController.createUser(name,email,pass);
+        userController.createUser(name, email, pass);
         userView.newUserAdded();
-        authenticateLogin();
+
+        User user = userController.getUser(email);
+        userView.welcomeUser(user.getName());
+        userController.login(user);
     }
 
     private void authenticateLogin() {
         userView.login();
-        String name = userView.getName();
-        String pass = userView.getPass();
-        if(userController.verifyUser(name,pass)){
-            User user = userController.getUser(name);
-            userView.welcomeUser(name);
-            userController.login(user);
-        }else{
-            userView.invalid();
+
+        while (true) {
+            String email = userView.getEmail();
+            String pass = userView.getPass();
+
+            if (userController.verifyUser(email, pass)) {
+                User user = userController.getUser(email);
+                userView.welcomeUser(user.getName());
+                userController.login(user);
+                return;
+            } else {
+                userView.invalid();
+            }
         }
     }
 
     private void createDummyRecord() {
         userController.createUser("Husain","husain@gmail.com","Husain123");
-        userController.createUser("Barath","barath@gmail.com");
+        userController.createUser("Barath","barath@gmail.com","123");
         userController.createUser("Adhithya","adhi@gmail.com","Adhi123");
-        userController.createUser("Deepak","deepak@gmail.com");
+        userController.createUser("Deepak","deepak@gmail.com","123");
         userController.createUser("Kavin","kavin@gmail.com","Kavin123");
     }
 }

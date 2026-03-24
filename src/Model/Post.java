@@ -1,10 +1,10 @@
 package Model;
 
-public class Journal {
+public class Post {
     private int id;
     private String content;
 
-    public Journal(int id, String content) {
+    public Post(int id, String content) {
         this.id = id;
         this.content = content;
     }

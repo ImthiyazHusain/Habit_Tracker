@@ -2,26 +2,22 @@ package Model;
 
 public class Habit {
     private int id;
-    private String type;
     private String name;
     private String description;
     private int completedPercentage;
-    private int goalDays;
+    private String frequency;
 
-    public Habit(int id, String type, String name, String description, int completedPercentage, int goalDays){
+
+    public Habit(int id, String name, String description, int completedPercentage, String frequency){
         this.id = id;
-        this.type = type;
         this.name = name;
         this.description = description;
         this.completedPercentage = completedPercentage;
-        this.goalDays = goalDays;
+        this.frequency = frequency;
     }
 
     public int getId(){
         return this.id;
-    }
-    public String getType(){
-        return this.type;
     }
     public int getCompletedPercentage() {
         return completedPercentage;
@@ -29,10 +25,33 @@ public class Habit {
     public String getDescription(){
         return this.description;
     }
-    public int getGoalDays(){
-        return this.goalDays;
+    public String getFrequency(){
+        return this.frequency;
     }
     public String getName() {
         return name;
+    }
+
+    public String toString(){
+        return ">> Habit ID : "+this.getId()+" >> Habit Name : "+this.getName()+" >> Completed Percentage : "+this.getCompletedPercentage()+"% >> Your Description : "+this.getDescription();
+    }
+    public String getStatus(){
+        return ">> Habit Name : "+this.getName()+" >> Completed Percentage : "+this.getCompletedPercentage()+"% >> Frequency : "+this.getFrequency();
+    }
+
+    public void setCompletedPercentage(int i) {
+        this.completedPercentage = i;
+    }
+
+    public void setName(String newName) {
+        this.name = newName;
+    }
+
+    public void setDescription(String newDesc) {
+        this.description=newDesc;
+    }
+
+    public void setFrequency(String newFreq) {
+        this.frequency = newFreq;
     }
 }

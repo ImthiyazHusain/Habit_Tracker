@@ -6,8 +6,8 @@ public class Main {
     public static void main(String[] args) {
         System.out.println(DEFAULT);
         System.out.println(BRIGHT_YELLOW+"--- Habit Tracker ---"+ DEFAULT);
-        MainController main = new MainController();
-        main.start();
+        MainController app = new MainController();
+        app.start();
         System.out.println(RESET);
     }
 }
